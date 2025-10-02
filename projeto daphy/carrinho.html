@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos - Ivella</title>
+    <title>Carrinho - Ivella</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,9 +17,9 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link">Início</a></li>
-                    <li><a href="produtos.html" class="nav-link active">Produtos</a></li>
+                    <li><a href="produtos.html" class="nav-link">Produtos</a></li>
                     <li>
-                        <a href="carrinho.html" class="nav-link cart-link">
+                        <a href="carrinho.html" class="nav-link cart-link active">
                             🛒 Carrinho
                             <span id="cart-count" class="cart-count">0</span>
                         </a>
@@ -36,18 +36,101 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Nossos Produtos</h1>
-            <p>Descubra peças incríveis que combinam com seu estilo</p>
+            <h1>Seu Carrinho</h1>
+            <p>Revise seus produtos antes de finalizar</p>
         </div>
     </section>
 
-    <section class="products-page">
+    <section class="cart-page">
         <div class="container">
-            <div class="products-grid" id="all-products">
-                <!-- Produtos carregados via JavaScript -->
+            <div id="cart-items" class="cart-items">
+                <!-- Itens do carrinho carregados via JavaScript -->
+            </div>
+            
+            <div id="cart-empty" class="cart-empty">
+                <div class="empty-state">
+                    <h3>Seu carrinho está vazio</h3>
+                    <p>Adicione alguns produtos incríveis!</p>
+                    <a href="produtos.html" class="btn btn-primary">Ver Produtos</a>
+                </div>
+            </div>
+
+            <div id="cart-summary" class="cart-summary">
+                <div class="summary-card">
+                    <h3>Resumo do Pedido</h3>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">R$ 0,00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Quantidade de Itens:</span>
+                            <span id="total-items">0</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total do Pedido:</span>
+                            <span id="total-price">R$ 0,00</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-whatsapp btn-full" id="checkout-btn">
+                        💬 Finalizar Pedido via WhatsApp
+                    </button>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Modal do WhatsApp -->
+    <div id="whatsapp-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>💜 Finalizar Pedido</h2>
+            
+            <form id="checkout-form" class="checkout-form">
+                <div class="form-group">
+                    <label for="customer-name">Seu Nome </label>
+                    <input type="text" id="customer-name" required placeholder="Digite seu nome">
+                </div>
+                
+              <div class="form-group">
+    <label for="delivery-option">Onde você quer retirar o pedido? *</label>
+    <select id="delivery-option" required>
+        <option value="">Selecione o local</option>
+        <option value="Retirar na loja - Centro, Canindé">Retirar na loja - Centro, Canindé</option>
+        <option value="Entrega em domicílio - Canindé">Entrega em domicílio - Canindé</option>
+        <option value="outra-cidade">Sou de outra cidade</option>
+    </select>
+</div>
+
+<div class="form-group" id="outra-cidade-group" style="display: none;">
+    <label for="cidade-personalizada">Qual sua cidade? *</label>
+    <input type="text" id="cidade-personalizada" placeholder="Digite o nome da sua cidade">
+</div>
+                <div class="form-group">
+                    <label for="payment-method">Como você vai pagar? *</label>
+                    <select id="payment-method" required>
+                        <option value="">Selecione a forma de pagamento</option>
+                        <option value="PIX">PIX</option>
+                        <option value="Cartão de Crédito">Cartão de Crédito</option>
+                        <option value="Cartão de Débito">Cartão de Débito</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="observations">Alguma observação? opcional. (Se o pagamento for em dinheiro, informar o valor para troco.)</label>
+                    <textarea id="observations" placeholder="tamanho, horário para retirada... Se o pagamento for em dinheiro, informar o valor para troco."></textarea>
+               
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-checkout">Voltar</button>
+                    <button type="submit" class="btn btn-whatsapp">
+                        Finalizar Pedido!📞
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
