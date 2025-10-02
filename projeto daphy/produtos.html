@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <header class="header">
         <nav class="navbar">
             <div class="nav-container">
                 <div class="logo">
-                    <a href="index.html"><h1>Ivella</h1></a>
+                    <a href="index.html">
+                        <span class="logo-text">Ivella</span>
+                    </a>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="produtos.html" class="active">Produtos</a></li>
-                    <li><a href="carrinho.html">Carrinho</a></li>
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="produtos.html" class="nav-link active">Produtos</a></li>
+                    <li>
+                        <a href="carrinho.html" class="nav-link cart-link">
+                            🛒 Carrinho
+                            <span id="cart-count" class="cart-count">0</span>
+                        </a>
+                    </li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -28,27 +34,26 @@
         </nav>
     </header>
 
-    <!-- Breadcrumb -->
-    <section class="breadcrumb">
+    <section class="page-header">
         <div class="container">
-            <a href="index.html">Início</a> > <span>Produtos</span>
+            <h1>Nossos Produtos</h1>
+            <p>Descubra peças incríveis que combinam com seu estilo</p>
         </div>
     </section>
 
-    <!-- Produtos Grid -->
-    <section class="produtos-page">
+    <section class="products-page">
         <div class="container">
-            <h1>Produtos</h1>
-            <div id="produtos-grid" class="produtos-grid">
-                <!-- Produtos carregados via JS -->
+            <div class="products-grid" id="all-products">
+                <!-- Produtos carregados via JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>&copy;2025 Ivella. Todos os direitos reservados.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ivella. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
