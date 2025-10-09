@@ -20,7 +20,7 @@
                     <li><a href="produtos.html" class="nav-link">Produtos</a></li>
                     <li>
                         <a href="carrinho.html" class="nav-link cart-link active">
-                            🛒 Carrinho
+                            🛒
                             <span id="cart-count" class="cart-count">0</span>
                         </a>
                     </li>
@@ -79,59 +79,72 @@
             </div>
         </div>
     </section>
-
-    <!-- Modal do WhatsApp -->
-    <div id="whatsapp-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>💜 Finalizar Pedido</h2>
+<!-- Modal do WhatsApp -->
+<div id="whatsapp-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>💜 Finalizar Pedido</h2>
+        
+        <form id="checkout-form" class="checkout-form">
+            <div class="form-group">
+                <label for="customer-name">Seu Nome *</label>
+                <input type="text" id="customer-name" required placeholder="Digite seu nome completo">
+            </div>
             
-            <form id="checkout-form" class="checkout-form">
-                <div class="form-group">
-                    <label for="customer-name">Seu Nome </label>
-                    <input type="text" id="customer-name" required placeholder="Digite seu nome">
-                </div>
-                
-              <div class="form-group">
-    <label for="delivery-option">Onde você quer retirar o pedido? *</label>
-    <select id="delivery-option" required>
-        <option value="">Selecione o local</option>
-        <option value="Retirar na loja - Centro, Canindé">Retirar na loja - Centro, Canindé</option>
-        <option value="Entrega em domicílio - Canindé">Entrega em domicílio - Canindé</option>
-        <option value="outra-cidade">Sou de outra cidade</option>
-    </select>
-</div>
-
-<div class="form-group" id="outra-cidade-group" style="display: none;">
-    <label for="cidade-personalizada">Qual sua cidade? *</label>
-    <input type="text" id="cidade-personalizada" placeholder="Digite o nome da sua cidade">
-</div>
-                <div class="form-group">
-                    <label for="payment-method">Como você vai pagar? *</label>
-                    <select id="payment-method" required>
-                        <option value="">Selecione a forma de pagamento</option>
-                        <option value="PIX">PIX</option>
-                        <option value="Cartão de Crédito">Cartão de Crédito</option>
-                        <option value="Cartão de Débito">Cartão de Débito</option>
-                        <option value="Dinheiro">Dinheiro</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="observations">Alguma observação? opcional. (Se o pagamento for em dinheiro, informar o valor para troco.)</label>
-                    <textarea id="observations" placeholder="tamanho, horário para retirada... Se o pagamento for em dinheiro, informar o valor para troco."></textarea>
-               
-                
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" id="cancel-checkout">Voltar</button>
-                    <button type="submit" class="btn btn-whatsapp">
-                        Finalizar Pedido!📞
-                    </button>
-                </div>
-            </form>
-        </div>
+            <div class="form-group">
+                <label for="delivery-option">Onde você quer retirar o pedido? *</label>
+                <select id="delivery-option" required>
+                    <option value="">Selecione o local</option>
+                    <option value="Retirar na loja - Centro, Canindé">Retirar na loja - Centro, Canindé</option>
+                    <option value="Entrega em domicílio - Canindé">Entrega em domicílio - Canindé</option>
+                    <option value="outra-cidade">Sou de outra cidade</option>
+                </select>
+            </div>
+            
+            <!-- Campo para endereço (aparece só quando seleciona entrega) -->
+            <div class="form-group" id="endereco-group" style="display: none;">
+                <label for="endereco">Seu endereço completo *</label>
+                <textarea id="endereco" placeholder="Digite seu endereço completo: rua, número, bairro, ponto de referência..."></textarea>
+                <small class="form-help">Para entregas em Canindé</small>
+            </div>
+            
+            <div class="form-group" id="outra-cidade-group" style="display: none;">
+                <label for="cidade-personalizada">Qual sua cidade? *</label>
+                <input type="text" id="cidade-personalizada" placeholder="Digite o nome da sua cidade">
+            </div>
+            
+            <div class="form-group">
+                <label for="payment-method">Como você vai pagar? *</label>
+                <select id="payment-method" required>
+                    <option value="">Selecione a forma de pagamento</option>
+                    <option value="PIX">PIX</option>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                    <option value="Cartão de Débito">Cartão de Débito</option>
+                    <option value="Dinheiro">Dinheiro</option>
+                </select>
+            </div>
+            
+            <!-- Campo para troco (aparece só quando seleciona dinheiro) -->
+            <div class="form-group" id="troco-group" style="display: none;">
+                <label for="valor-troco">Precisa de troco? Para quanto? *</label>
+                <input type="text" id="valor-troco" placeholder="Ex: R$ 50,00 (deixe em branco se não precisar de troco)">
+                <small class="form-help">Informe o valor para que possamos preparar o troco</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="observations">Outras observações (opcional)</label>
+                <textarea id="observations" placeholder="Tamanho preferido, cor, horário para entrega/retirada..."></textarea>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="cancel-checkout">Voltar</button>
+                <button type="submit" class="btn btn-whatsapp">
+                    💬 Finalizar Pedido
+                </button>
+            </div>
+        </form>
     </div>
-
+</div>
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
