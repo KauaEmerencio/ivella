@@ -1,4 +1,4 @@
-// Dados dos produtos
+
 const produtos = [
     {
         id: 1,
@@ -505,3 +505,4 @@ function gerarMensagemWhatsApp(nome, local, pagamento, valorTroco, observacoes) 
     
     return mensagem;
 }
+
