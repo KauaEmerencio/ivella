@@ -39,12 +39,24 @@ const produtos = [
         referencia: "342",
         material: "CREPE",
         preco: 137.22,
-        cores:["Universal"],
+        cores: ["Universal"],
+        descricao: "Vestido elegante para festas e eventos.",
+        categoria: "Feminino",
+        imagem: "assets/vestido4.jpeg"
+    },
+      {
+        id: 4,
+        nome: "teste4",
+        referencia: "342",
+        material: "CREPE",
+        preco: 137.22,
+        cores: ["Universal"],
         descricao: "Vestido elegante para festas e eventos.",
         categoria: "Feminino",
         imagem: "assets/vestido4.jpeg"
     }
 ];
+
 
 // Carrinho de compras
 let carrinho = JSON.parse(localStorage.getItem('ivella_carrinho')) || [];
@@ -90,19 +102,6 @@ function configurarEventListeners() {
     if (closeModal) {
         closeModal.addEventListener('click', fecharModalWhatsApp);
     }
-        const deliveryOption = document.getElementById('delivery-option');
-    if (deliveryOption) {
-        deliveryOption.addEventListener('change', function() {
-            const outraCidadeGroup = document.getElementById('outra-cidade-group');
-            if (this.value === 'outra-cidade') {
-                outraCidadeGroup.style.display = 'block';
-            } else {
-                outraCidadeGroup.style.display = 'none';
-            }
-        });
-    }
-}
-
     
     // Fechar modal ao clicar fora
     const modal = document.getElementById('whatsapp-modal');
@@ -113,7 +112,40 @@ function configurarEventListeners() {
             }
         });
     }
-    
+
+    // Configurar select de entrega
+    const deliveryOption = document.getElementById('delivery-option');
+    if (deliveryOption) {
+        deliveryOption.addEventListener('change', function() {
+            const outraCidadeGroup = document.getElementById('outra-cidade-group');
+            const enderecoGroup = document.getElementById('endereco-group');
+            
+            if (this.value === 'outra-cidade') {
+                outraCidadeGroup.style.display = 'block';
+                enderecoGroup.style.display = 'none';
+            } else if (this.value === 'Entrega em domicílio - Canindé') {
+                enderecoGroup.style.display = 'block';
+                outraCidadeGroup.style.display = 'none';
+            } else {
+                enderecoGroup.style.display = 'none';
+                outraCidadeGroup.style.display = 'none';
+            }
+        });
+    }
+
+    // Configurar select de pagamento para mostrar campo de troco
+    const paymentMethod = document.getElementById('payment-method');
+    if (paymentMethod) {
+        paymentMethod.addEventListener('change', function() {
+            const trocoGroup = document.getElementById('troco-group');
+            if (this.value === 'Dinheiro') {
+                trocoGroup.style.display = 'block';
+            } else {
+                trocoGroup.style.display = 'none';
+            }
+        });
+    }
+
     // Cancelar checkout
     const cancelCheckout = document.getElementById('cancel-checkout');
     if (cancelCheckout) {
@@ -131,7 +163,7 @@ function configurarEventListeners() {
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', abrirModalWhatsApp);
     }
-
+}
 
 // Atualizar contador do carrinho
 function atualizarContadorCarrinho() {
@@ -330,12 +362,17 @@ function configurarBotoesQuantidade() {
         });
     });
 }
-
 // Alterar quantidade do produto
 function alterarQuantidade(produtoId, mudanca) {
     const item = carrinho.find(item => item.id === produtoId);
     
     if (item) {
+        // Verifica se está tentando aumentar além do limite
+        if (mudanca > 0 && item.quantidade >= 3) {
+            alert("Limite máximo de 3 peças por produto atingido!");
+            return; // Sai da função sem fazer alterações
+        }
+        
         item.quantidade += mudanca;
         
         if (item.quantidade <= 0) {
@@ -384,7 +421,9 @@ function finalizarPedidoWhatsApp(e) {
     const nome = document.getElementById('customer-name').value.trim();
     const localSelect = document.getElementById('delivery-option').value;
     const cidadePersonalizada = document.getElementById('cidade-personalizada').value.trim();
+    const endereco = document.getElementById('endereco').value.trim();
     const pagamento = document.getElementById('payment-method').value;
+    const valorTroco = document.getElementById('valor-troco').value.trim();
     const observacoes = document.getElementById('observations').value.trim();
     
     // Validar campos
@@ -393,9 +432,18 @@ function finalizarPedidoWhatsApp(e) {
         return;
     }
     
-    // Validar cidade personalizada se selecionou "outra cidade"
+    // Validar endereço se for entrega
     let localFinal = localSelect;
-    if (localSelect === 'outra-cidade') {
+    if (localSelect === 'Entrega em endereço - Canindé') {
+        if (!endereco) {
+            alert('Por favor, digite seu endereço para entrega!');
+            return;
+        }
+        localFinal = `Entrega em - ${endereco}`;
+    }
+    
+    // Validar cidade personalizada
+    if (localSelect === 'Outra cidade') {
         if (!cidadePersonalizada) {
             alert('Por favor, digite o nome da sua cidade!');
             return;
@@ -403,7 +451,13 @@ function finalizarPedidoWhatsApp(e) {
         localFinal = `Entrega - ${cidadePersonalizada}`;
     }
     
-    const mensagem = gerarMensagemWhatsApp(nome, localFinal, pagamento, observacoes);
+    // Validar troco se pagamento for em dinheiro
+    if (pagamento === 'Dinheiro' && !valorTroco) {
+        alert('Favor, informe se precisa de troco! Se não precisar, digite "Não preciso de troco"');
+        return;
+    }
+    
+    const mensagem = gerarMensagemWhatsApp(nome, localFinal, pagamento, valorTroco, observacoes);
     const numeroWhatsApp = "5579981111957";
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
     
@@ -412,31 +466,42 @@ function finalizarPedidoWhatsApp(e) {
 }
 
 // Gerar mensagem para WhatsApp
-function gerarMensagemWhatsApp(nome, local, pagamento, observacoes) {
+function gerarMensagemWhatsApp(nome, local, pagamento, valorTroco, observacoes) {
     const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
     const totalProdutos = carrinho.reduce((total, item) => total + (item.preco * item.quantidade), 0);
     
-    let mensagem = `Olá, meu nome é ${nome}\n\n`;
-    mensagem += `Gostaria de fazer o seguinte pedido:\n\n`;
+    let mensagem = `🛍️ *PEDIDO - IVELLA* 🛍️\n\n`;
+    mensagem += `*Cliente:* ${nome}\n`;
+    mensagem += `*Local/Endereço:* ${local}\n`;
+    mensagem += `*Forma de Pagamento:* ${pagamento}\n`;
+    
+    if (pagamento === 'Dinheiro' && valorTroco) {
+        mensagem += `*Troco para:* ${valorTroco}\n`;
+    }
+    
+    mensagem += `\n${'═'.repeat(50)}\n\n`;
+    mensagem += `*ITENS DO PEDIDO:*\n\n`;
     
     carrinho.forEach((item, index) => {
         const subtotal = item.preco * item.quantidade;
-        mensagem += `${index + 1}. ${item.nome}\n`;
-        mensagem += `   Quantidade: ${item.quantidade}\n`;
-        mensagem += `   Preço unitário: R$ ${item.preco.toFixed(2)}\n`;
-        mensagem += `   Subtotal: R$ ${subtotal.toFixed(2)}\n\n`;
+        mensagem += `*${index + 1}. ${item.nome}*\n`;
+        mensagem += `   📍 Ref: ${item.referencia}\n`;
+        mensagem += `   🎨 Cor: ${item.corSelecionada}\n`;
+        mensagem += `   🔢 Quantidade: ${item.quantidade}\n`;
+        mensagem += `   💰 Preço unitário: R$ ${item.preco.toFixed(2)}\n`;
+        mensagem += `   💵 Subtotal: R$ ${subtotal.toFixed(2)}\n\n`;
     });
     
-    mensagem += `📦 Total de Itens: ${totalItens}\n`;
-    mensagem += `💰 Valor Total: R$ ${totalProdutos.toFixed(2)}\n\n`;
-    mensagem += `📍 Local de Retirada/Entrega: ${local}\n`;
-    mensagem += `💳 Forma de Pagamento: ${pagamento}\n`;
+    mensagem += `${'═'.repeat(50)}\n\n`;
+    mensagem += `📦 *Total de Itens:* ${totalItens}\n`;
+    mensagem += `💰 *Valor Total:* R$ ${totalProdutos.toFixed(2)}\n\n`;
     
     if (observacoes) {
-        mensagem += `📝 Observações: ${observacoes}\n`;
+        mensagem += `📝 *Observações:* ${observacoes}\n\n`;
     }
     
-    mensagem += `\nAguardo a confirmação do pedido. Obrigada!`;
+    mensagem += `⏰ *Pedido realizado em:* ${new Date().toLocaleString('pt-BR')}\n`;
+    mensagem += `\n_Aguardo a confirmação! Obrigada! 💜_`;
     
     return mensagem;
 }
