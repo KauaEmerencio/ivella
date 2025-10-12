@@ -4,7 +4,7 @@ const produtos = [
         id: 1,
         nome: "Conjunto Aurora",
         referencia: "36 a 48",
-        material: "Microfibra",
+        material: "",
         preco: 137.22,
         cores: ["Universal"],
         descricao: "Vestido clássico em microfibra, confortável e elegante.",
@@ -15,7 +15,7 @@ const produtos = [
         id: 2,
         nome: "Luna",
         referencia: "36 a 48",
-        material: "Viscose",
+        material: "",
         preco: 117.22,
         cores: ["Universal"],
         descricao: "Vestido longo perfeito para ocasiões especiais.",
@@ -26,7 +26,7 @@ const produtos = [
         id: 3,
         nome: "Conjunto Maya",
         referencia: "36 a 48",
-        material: "Algodão",
+        material: "",
         preco: 117.22,
         cores: ["Universal"],
         descricao: "Vestido casual para o dia a dia.",
@@ -35,7 +35,7 @@ const produtos = [
     },
     {
         id: 4,
-        nome: "Vestido Elegante",
+        nome: "Vestido",
         referencia: "342",
         material: "CREPE",
         preco: 137.22,
@@ -45,6 +45,7 @@ const produtos = [
         imagem: "assets/vestido4.jpeg"
     },
 ];
+
 
 // Carrinho de compras
 let carrinho = JSON.parse(localStorage.getItem('ivella_carrinho')) || [];
@@ -77,7 +78,7 @@ function carregarConteudoPorPagina() {
     const path = window.location.pathname;
     const page = path.split("/").pop();
     
-    if (page === 'produtos.html' || page === '') {
+    if (page === 'produtos.html') {
         carregarTodosProdutos();
     } else if (page === 'carrinho.html') {
         carregarPaginaCarrinho();
@@ -229,10 +230,6 @@ function adicionarAoCarrinho(produtoId, button) {
         const itemExistente = carrinho.find(item => item.id === produtoId);
         
         if (itemExistente) {
-            if (itemExistente.quantidade >= 3) {
-                alert("O limite por peças são 3.");
-                return;
-            }
             itemExistente.quantidade += 1;
         } else {
             carrinho.push({
@@ -354,7 +351,6 @@ function configurarBotoesQuantidade() {
         });
     });
 }
-
 // Alterar quantidade do produto
 function alterarQuantidade(produtoId, mudanca) {
     const item = carrinho.find(item => item.id === produtoId);
@@ -362,8 +358,8 @@ function alterarQuantidade(produtoId, mudanca) {
     if (item) {
         // Verifica se está tentando aumentar além do limite
         if (mudanca > 0 && item.quantidade >= 3) {
-            alert("O limite por peças são 3.");
-            return;
+            alert("Limite máximo de 3 ´p");
+            return; // Sai da função sem fazer alterações
         }
         
         item.quantidade += mudanca;
@@ -387,11 +383,9 @@ function removerDoCarrinho(produtoId) {
 // Abrir modal do WhatsApp
 function abrirModalWhatsApp() {
     const modal = document.getElementById('whatsapp-modal');
-    if (modal && carrinho.length > 0) {
+    if (modal) {
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
-    } else if (carrinho.length === 0) {
-        alert('Adicione produtos ao carrinho antes de finalizar o pedido!');
     }
 }
 
@@ -429,7 +423,7 @@ function finalizarPedidoWhatsApp(e) {
     
     // Validar endereço se for entrega
     let localFinal = localSelect;
-    if (localSelect === 'Entrega em domicílio - Canindé') {
+    if (localSelect === 'Entrega em endereço - Canindé') {
         if (!endereco) {
             alert('Por favor, digite seu endereço para entrega!');
             return;
@@ -438,7 +432,7 @@ function finalizarPedidoWhatsApp(e) {
     }
     
     // Validar cidade personalizada
-    if (localSelect === 'outra-cidade') {
+    if (localSelect === 'Outra cidade') {
         if (!cidadePersonalizada) {
             alert('Por favor, digite o nome da sua cidade!');
             return;
