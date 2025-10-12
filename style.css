@@ -42,6 +42,7 @@ body {
     z-index: 1000;
 }
 
+
 .navbar {
     padding: 1rem 0;
 }
@@ -53,7 +54,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    position: relative;
 }
 
 .logo a {
@@ -61,6 +61,12 @@ body {
     align-items: center;
     text-decoration: none;
     gap: 12px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    border-radius: 5px;
 }
 
 .logo-text {
@@ -90,12 +96,10 @@ body {
     color: var(--dark-purple);
     background: var(--light-purple);
 }
-
-/* Cart */
-.cart-desktop {
-    position: relative;
-    display: flex;
+.mobile-controls{
+    display: none; /* escondido no desktop */
     align-items: center;
+    gap: 15px;
 }
 
 .cart-link {
@@ -110,62 +114,27 @@ body {
     padding: 2px 6px;
     font-size: 0.7rem;
     font-weight: bold;
-    position: absolute;
-    top: -8px;
-    right: -10px;
+    margin-left: 5px;
 }
 
-/* Hamburger */
+
+.cart-desktop {
+    margin-left: 390px; /* empurra para a direita */
+}
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .hamburger span {
     width: 26px;
-    height: 3px;
+    height: 5px;
     background: var(--dark-purple);
-    margin: 4px 0;
-    transition: 0.3s;
+    margin: 3px 0;
+    transition: 0.1s;
 }
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-menu {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 70%;
-        height: 100%;
-        flex-direction: column;
-        background: var(--white);
-        gap: 1rem;
-        padding-top: 80px;
-        transition: 0.3s;
-        z-index: 1500;
-        box-shadow: 2px 0 15px rgba(0,0,0,0.1);
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .nav-link {
-        padding: 1rem;
-        width: 100%;
-        text-align: center;
-    }
-
-    .cart-desktop {
-        display: none; /* escondemos no mobile, pode usar dentro do menu */
-    }
-}
-
 /* ===== HERO SECTION ===== */
 .hero {
     background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
@@ -813,7 +782,7 @@ body {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .hamburger {
+    .mobile-controls {
         display: flex;
     }
 
