@@ -7,47 +7,60 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">Ivella</span>
+                    </a>
+                </div>
 
-<header class="header">
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="logo"><a href="index.html"><span class="logo-text">Ivella</span></a></div>
-      <ul class="nav-menu">
-        <li><a href="index.html" class="nav-link">Início</a></li>
-        <li><a href="produtos.html" class="nav-link">Produtos</a></li>
-        <li><a href="#contato" class="nav-link">Contato</a></li>
-      </ul>
-      <div class="cart-desktop">
-        <a href="carrinho.html" class="cart-link">🛒<span class="cart-count">0</span></a>
-      </div>
-      <div class="hamburger"><span></span><span></span><span></span></div>
-    </div>
-  </nav>
-</header>
+                <!-- Menu principal -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="produtos.html" class="nav-link">Produtos</a></li>
+                    <li><a href="#contato" class="nav-link">Contato</a></li>
+                </ul>
 
-<section class="page-header">
-    <div class="container">
-        <h1>Nossos Produtos</h1>
-        <p>Descubra peças incríveis que combinam com seu estilo</p>
-    </div>
-</section>
+                <!-- Controles mobile: carrinho + hamburger -->
+                <div class="mobile-controls">
+                    <a href="carrinho.html" class="cart-link">🛒<span class="cart-count">0</span></a>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<section class="products-page">
-    <div class="container">
-        <div class="products-grid" id="all-products">
-            <!-- Produtos carregados via JavaScript -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Nossos Produtos</h1>
+            <p>Descubra peças incríveis que combinam com seu estilo</p>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-bottom">
-      <p>&copy; 2025 Ivella. Todos os direitos reservados.</p>
-    </div>
-  </div>
-</footer>
+    <section class="products-page">
+        <div class="container">
+            <div class="products-grid" id="all-products">
+                <!-- Produtos carregados via JavaScript -->
+            </div>
+            
+        </div>
+    </section>
 
-<script src="script.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ivella. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
