@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho - Ivella</title>
+    <title>Produtos - Ivella</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,46 +27,15 @@
 
 <section class="page-header">
     <div class="container">
-        <h1>Seu Carrinho</h1>
-        <p>Revise seus produtos antes de finalizar</p>
+        <h1>Nossos Produtos</h1>
+        <p>Descubra peças incríveis que combinam com seu estilo</p>
     </div>
 </section>
 
-<section class="cart-page">
+<section class="products-page">
     <div class="container">
-        <div id="cart-items" class="cart-items">
-            <!-- Itens do carrinho carregados via JavaScript -->
-        </div>
-        
-        <div id="cart-empty" class="cart-empty">
-            <div class="empty-state">
-                <h3>Seu carrinho está vazio</h3>
-                <p>Adicione alguns produtos incríveis!</p>
-                <a href="produtos.html" class="btn btn-primary">Ver Produtos</a>
-            </div>
-        </div>
-
-        <div id="cart-summary" class="cart-summary">
-            <div class="summary-card">
-                <h3>Resumo do Pedido</h3>
-                <div class="summary-details">
-                    <div class="summary-row">
-                        <span>Subtotal:</span>
-                        <span id="subtotal">R$ 0,00</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Quantidade de Itens:</span>
-                        <span id="total-items">0</span>
-                    </div>
-                    <div class="summary-row total">
-                        <span>Total do Pedido:</span>
-                        <span id="total-price">R$ 0,00</span>
-                    </div>
-                </div>
-                <button class="btn btn-whatsapp btn-full" id="checkout-btn">
-                    Finalizar Pedido 💬
-                </button>
-            </div>
+        <div class="products-grid" id="all-products">
+            <!-- Produtos carregados via JavaScript -->
         </div>
     </div>
 </section>
