@@ -16,11 +16,11 @@
     --dark-gray: #7D51B1;
     --text-dark: #2C3E50;
     --success: #058c3d;
-    --error: #d10606;
+    --error: #a50202;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans-serif, 'italic' ;
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--light-gray);
@@ -32,7 +32,7 @@ body {
     padding: 0 20px;
 }
 
-/* ===== HEADER & NAVIGATION ===== */
+/* ===== HEADER & NAVIGATION CORRIGIDO ===== */
 .header {
     background: var(--white);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -41,7 +41,6 @@ body {
     top: 0;
     z-index: 1000;
 }
-
 
 .navbar {
     padding: 1rem 0;
@@ -63,23 +62,21 @@ body {
     gap: 12px;
 }
 
-.logo-img {
-    height: 40px;
-    width: auto;
-    border-radius: 5px;
-}
-
 .logo-text {
     font-size: 1.8rem;
     font-weight: bold;
     color: var(--dark-purple);
 }
 
+/* Menu desktop */
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 2rem;
     align-items: center;
+}
+.nav-menu.cart-link {
+    display: none;
 }
 
 .nav-link {
@@ -96,45 +93,68 @@ body {
     color: var(--dark-purple);
     background: var(--light-purple);
 }
-.mobile-controls{
-    display: none; /* escondido no desktop */
+
+/* Controles mobile - SEMPRE VISÍVEIS NO MOBILE */
+.mobile-controls {
+    display: flex;
     align-items: center;
     gap: 15px;
 }
 
+/* Carrinho sempre visível */
 .cart-link {
-    position: relative;
+     position: relative;
+    text-decoration: none;
     font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    color: var(--text-dark);
 }
 
 .cart-count {
-    background: var(--error);
+   background: var(--error);
     color: var(--white);
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 0.7rem;
     font-weight: bold;
-    margin-left: 5px;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    min-width: 18px;
+    text-align: center;
 }
 
-
-.cart-desktop {
-    margin-left: 390px; /* empurra para a direita */
-}
+/* Hamburger menu */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    margin-right: 10px;
+    padding: 5px;
 }
 
 .hamburger span {
-    width: 26px;
-    height: 5px;
+    width: 25px;
+    height: 3px;
     background: var(--dark-purple);
     margin: 3px 0;
-    transition: 0.1s;
+    transition: 0.3s;
+    border-radius: 2px;
 }
+
+/* Estados ativos do hamburger */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
 /* ===== HERO SECTION ===== */
 .hero {
     background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
@@ -162,6 +182,11 @@ body {
     opacity: 0.8;
 }
 
+.hero-content img {
+    max-width: 200px;
+    margin-bottom: 2rem;
+}
+
 /* ===== BUTTONS ===== */
 .btn {
     display: inline-block;
@@ -177,17 +202,13 @@ body {
 }
 
 .btn-primary {
-    background: var(--primary-purple);
-    color: var(--white);
-    border-radius: 19px;
-    background: #F8F9FA;
+    background-color: #ffffff;
     color: black;
-
+    border-radius: 19px;
 }
 
 .btn-primary:hover {
     background: var(--dark-purple);
-    color: white;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(135, 2, 253, 0.3);
 }
@@ -209,7 +230,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #5d06c0;
+    background: #025c23;
     color: white;
     text-decoration: none;
     padding: 10px 20px;
@@ -221,7 +242,7 @@ body {
 }
 
 .btn-whatsapp:hover {
-    background: #2d9604;
+    background: #128C7E;
     transform: translateY(-2px);
 }
 
@@ -236,7 +257,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: #5d06c0;
+    background: #E4405F;
     color: white;
     text-decoration: none;
     padding: 10px 20px;
@@ -248,42 +269,8 @@ body {
 }
 
 .btn-instagram:hover {
+    background: #C13584;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-/* ===== ÍCONES DAS FEATURES ===== */
-.feature-icon {
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.feature-icon svg {
-    width: 28px;
-    height: 28px;
-}
-
-.feature:hover .feature-icon svg {
-    transform: translateY(-2px);
-    transition: transform 0.3s ease;
-}
-.feature-icon {
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.feature-icon svg {
-    width: 28px;
-    height: 28px;
-}
-
-.feature:hover .feature-icon svg {
-    transform: translateY(-2px);
-    transition: transform 0.3s ease;
 }
 
 /* ===== SECTIONS ===== */
@@ -463,6 +450,18 @@ body {
     font-size: 1.3rem;
 }
 
+.feature-icon {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
 /* ===== CART ===== */
 .cart-page {
     padding: 40px 0;
@@ -639,11 +638,8 @@ body {
     height: 100%;
     background-color: rgba(0,0,0,0.5);
     backdrop-filter: blur(5px);
-
-    overflow-y: auto; /* permite rolagem no modal */
-    -webkit-overflow-scrolling: touch; /* suaviza rolagem no iPhone */
 }
-/* Conteúdo do modal */
+
 .modal-content {
     background-color: var(--white);
     margin: 5% auto;
@@ -653,21 +649,8 @@ body {
     max-width: 500px;
     position: relative;
     animation: modalSlideIn 0.3s ease;
-
-    overflow: visible; /* garante que o conteúdo maior não seja cortado */
-}
-.hero-content img {
-    height: 15px;
-    width: 1;
 }
 
-/* Evita zoom no iPhone em inputs, selects e textareas */
-.modal input,
-.modal select,
-.modal textarea,
-.modal button {
-    font-size: 16px; /* importante para Safari */
-}
 @keyframes modalSlideIn {
     from {
         opacity: 0;
@@ -782,10 +765,7 @@ body {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .mobile-controls {
-        display: flex;
-    }
-
+    /* Menu mobile */
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -798,6 +778,7 @@ body {
         box-shadow: 0 10px 27px rgba(0,0,0,0.1);
         padding: 2rem 0;
         gap: 0;
+        z-index: 999;
     }
 
     .nav-menu.active {
@@ -807,9 +788,19 @@ body {
     .nav-link {
         padding: 1rem 2rem;
         width: 100%;
-        justify-content: center;
+        display: block;
     }
 
+    /* Controles mobile VISÍVEIS */
+    .mobile-controls {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Ajustes de layout */
     .hero-title {
         font-size: 2rem;
     }
@@ -870,5 +861,8 @@ body {
     .about {
         padding: 60px 0;
     }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
 }
-
