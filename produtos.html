@@ -15,20 +15,19 @@
                         <span class="logo-text">Ivella</span>
                     </a>
                 </div>
-           <ul class="nav-menu">
+
+                <ul class="nav-menu">
                     <li><a href="index.html" class="nav-link">Início</a></li>
                     <li><a href="produtos.html" class="nav-link">Produtos</a></li>
-                    <li>
-                        
-                            <span id="cart-count" class="cart-count">0</span>
-                        </a>
-                    </li>
                     <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
+
+                <!-- Carrinho sempre visível -->
                 <div class="cart-desktop">
-    <a href="carrinho.html" class="cart-link">🛒<span id="cart-count">0</span></a>
-       <span id="cart-count" class="cart-count">0</span>
-</div>
+                    <a href="carrinho.html" class="cart-link">🛒<span class="cart-count" id="cart-count">0</span></a>
+                </div>
+
+                <!-- Menu hambúrguer -->
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -47,12 +46,14 @@
 
     <section class="products-page">
         <div class="container">
-            <div class="products-grid" id="all-products" >
+            <div class="products-grid" id="all-products">
                 <!-- Produtos carregados via JavaScript -->
             </div>
+
             <div class="cart-button-container">
-    <button id="carrinho">Ver carrinho</button>
-</div>
+                <button id="carrinho">Ver carrinho</button>
+            </div>
+        </div>
     </section>
 
     <footer class="footer">
