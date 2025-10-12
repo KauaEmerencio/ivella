@@ -42,6 +42,7 @@ body {
     z-index: 1000;
 }
 
+
 .navbar {
     padding: 1rem 0;
 }
@@ -110,20 +111,25 @@ body {
     margin-left: 5px;
 }
 
+
+
+.cart-desktop {
+    margin-left: 390px; /* empurra para a direita */
+}
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .hamburger span {
-    width: 25px;
-    height: 3px;
+    width: 26px;
+    height: 5px;
     background: var(--dark-purple);
     margin: 3px 0;
-    transition: 0.3s;
+    transition: 0.1s;
 }
-
 /* ===== HERO SECTION ===== */
 .hero {
     background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
@@ -168,11 +174,15 @@ body {
 .btn-primary {
     background: var(--primary-purple);
     color: var(--white);
-    border-radius: 30px;
+    border-radius: 19px;
+    background: #F8F9FA;
+    color: black;
+
 }
 
 .btn-primary:hover {
     background: var(--dark-purple);
+    color: white;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(135, 2, 253, 0.3);
 }
@@ -238,6 +248,22 @@ body {
 }
 
 /* ===== ÍCONES DAS FEATURES ===== */
+.feature-icon {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.feature:hover .feature-icon svg {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+}
 .feature-icon {
     margin-bottom: 1rem;
     display: flex;
@@ -624,6 +650,10 @@ body {
     animation: modalSlideIn 0.3s ease;
 
     overflow: visible; /* garante que o conteúdo maior não seja cortado */
+}
+.hero-content img {
+    height: 15px;
+    width: 1;
 }
 
 /* Evita zoom no iPhone em inputs, selects e textareas */
