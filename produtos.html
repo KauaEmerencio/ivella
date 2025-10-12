@@ -3,67 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos - Ivella</title>
+    <title>Carrinho - Ivella</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo">
-                    <a href="index.html">
-                        <span class="logo-text">Ivella</span>
-                    </a>
-                </div>
 
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Início</a></li>
-                    <li><a href="produtos.html" class="nav-link">Produtos</a></li>
-                    <li><a href="#contato" class="nav-link">Contato</a></li>
-                </ul>
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo"><a href="index.html"><span class="logo-text">Ivella</span></a></div>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Início</a></li>
+        <li><a href="produtos.html" class="nav-link">Produtos</a></li>
+        <li><a href="#contato" class="nav-link">Contato</a></li>
+      </ul>
+      <div class="cart-desktop">
+        <a href="carrinho.html" class="cart-link">🛒<span class="cart-count">0</span></a>
+      </div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+</header>
 
-                <!-- Carrinho sempre visível -->
-                <div class="cart-desktop">
-                    <a href="carrinho.html" class="cart-link">🛒<span class="cart-count" id="cart-count">0</span></a>
-                </div>
+<section class="page-header">
+    <div class="container">
+        <h1>Seu Carrinho</h1>
+        <p>Revise seus produtos antes de finalizar</p>
+    </div>
+</section>
 
-                <!-- Menu hambúrguer -->
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <section class="page-header">
-        <div class="container">
-            <h1>Nossos Produtos</h1>
-            <p>Descubra peças incríveis que combinam com seu estilo</p>
+<section class="cart-page">
+    <div class="container">
+        <div id="cart-items" class="cart-items">
+            <!-- Itens do carrinho carregados via JavaScript -->
         </div>
-    </section>
-
-    <section class="products-page">
-        <div class="container">
-            <div class="products-grid" id="all-products">
-                <!-- Produtos carregados via JavaScript -->
-            </div>
-
-            <div class="cart-button-container">
-                <button id="carrinho">Ver carrinho</button>
+        
+        <div id="cart-empty" class="cart-empty">
+            <div class="empty-state">
+                <h3>Seu carrinho está vazio</h3>
+                <p>Adicione alguns produtos incríveis!</p>
+                <a href="produtos.html" class="btn btn-primary">Ver Produtos</a>
             </div>
         </div>
-    </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2025 Ivella. Todos os direitos reservados.</p>
+        <div id="cart-summary" class="cart-summary">
+            <div class="summary-card">
+                <h3>Resumo do Pedido</h3>
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Quantidade de Itens:</span>
+                        <span id="total-items">0</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total do Pedido:</span>
+                        <span id="total-price">R$ 0,00</span>
+                    </div>
+                </div>
+                <button class="btn btn-whatsapp btn-full" id="checkout-btn">
+                    Finalizar Pedido 💬
+                </button>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script src="script.js"></script>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2025 Ivella. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
