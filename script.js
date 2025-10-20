@@ -6,19 +6,19 @@ const produtos = [
         referencia: "36 a 48",
         material: "",
         preco: 137.22,
-        cores: ["Universal"],
-        descricao: "Vestido clássico em microfibra, confortável e elegante.",
+        cores: [""],
+        descricao: "Conforto, estilo e aquele toque que combina com qualquer ocasião.",
         categoria: "Feminino",
-        imagem: "assets/vestido.jpeg"
+        imagem: "assets/img3.jpg"
     },
     {
         id: 2,
-        nome: "Luna",
+        nome: "Vestido Luna",
         referencia: "36 a 48",
         material: "",
         preco: 117.22,
-        cores: ["Universal"],
-        descricao: "Vestido longo perfeito para ocasiões especiais.",
+        cores: [""],
+        descricao: "O equilíbrio perfeito entre conforto e elegância.",
         categoria: "Feminino",
         imagem: "assets/vestido2.jpeg"
     },
@@ -28,10 +28,10 @@ const produtos = [
         referencia: "36 a 48",
         material: "",
         preco: 117.22,
-        cores: ["Universal"],
-        descricao: "Vestido casual para o dia a dia.",
+        cores: ["Azul Royale"],
+        descricao: "Leve, charmoso e cheio de confiança do dia a dia ao encontro especial.",
         categoria: "Feminino",
-        imagem: "assets/vestidoazul.jpeg"
+        imagem: "assets/img2.jpg"
     },
     {
         id: 4,
@@ -39,10 +39,10 @@ const produtos = [
         referencia: "342",
         material: "CREPE",
         preco: 137.22,
-        cores: ["Universal"],
-        descricao: "Vestido elegante para festas e eventos.",
+        cores: [""],
+        descricao: "leve, elegante e com aquele caimento que valoriza sem esforço.",
         categoria: "Feminino",
-        imagem: "assets/vestido4.jpeg"
+        imagem: "assets/img1.jpg"
     },
 ];
 
@@ -358,7 +358,7 @@ function alterarQuantidade(produtoId, mudanca) {
     if (item) {
         // Verifica se está tentando aumentar além do limite
         if (mudanca > 0 && item.quantidade >= 3) {
-            alert("Limite máximo de 3 ´p");
+            alert("Cada peça possui limite de até 3 unidades. Caso deseje adquirir mais, registre nas observações ao finalizar o pedido.");
             return; // Sai da função sem fazer alterações
         }
         
@@ -403,7 +403,7 @@ function finalizarPedidoWhatsApp(e) {
     e.preventDefault();
     
     if (carrinho.length === 0) {
-        alert('Adicione produtos ao carrinho antes de finalizar o pedido!');
+        alert('Adicione Roupas ao carrinho antes de finalizar o pedido!');
         return;
     }
     
@@ -432,7 +432,7 @@ function finalizarPedidoWhatsApp(e) {
     }
     
     // Validar cidade personalizada
-    if (localSelect === 'Outra cidade') {
+    if (localSelect === 'Sou de outra cidade') {
         if (!cidadePersonalizada) {
             alert('Por favor, digite o nome da sua cidade!');
             return;
