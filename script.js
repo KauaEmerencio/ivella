@@ -6,7 +6,7 @@ const produtos = [
         referencia: "36 a 48",
         material: "",
         preco: 137.22,
-        cores: [""],
+        cores: ["."],
         descricao: "Conforto, estilo e aquele toque que combina com qualquer ocasião.",
         categoria: "Feminino",
         imagem: "assets/img3.jpg"
@@ -17,7 +17,7 @@ const produtos = [
         referencia: "36 a 48",
         material: "",
         preco: 117.22,
-        cores: [""],
+        cores: ["."],
         descricao: "O equilíbrio perfeito entre conforto e elegância.",
         categoria: "Feminino",
         imagem: "assets/vestido2.jpeg"
@@ -35,11 +35,11 @@ const produtos = [
     },
     {
         id: 4,
-        nome: "Vestido",
+        nome: "Vestido Lara",
         referencia: "342",
-        material: "CREPE",
+        material: "",
         preco: 137.22,
-        cores: [""],
+        cores: ["."],
         descricao: "leve, elegante e com aquele caimento que valoriza sem esforço.",
         categoria: "Feminino",
         imagem: "assets/img1.jpg"
