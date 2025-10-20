@@ -37,7 +37,7 @@ const produtos = [
         id: 4,
         nome: "Vestido Lara",
         referencia: "342",
-        material: "",
+        material: ".",
         preco: 137.22,
         cores: ["."],
         descricao: "leve, elegante e com aquele caimento que valoriza sem esforço.",
@@ -494,3 +494,4 @@ function gerarMensagemWhatsApp(nome, local, pagamento, valorTroco, observacoes) 
     
     return mensagem;
 }
+
