@@ -32,7 +32,7 @@ body {
     padding: 0 20px;
 }
 
-/* ===== HEADER & NAVIGATION CORRIGIDO ===== */
+/*HEADER*/
 .header {
     background: var(--white);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -142,7 +142,6 @@ body {
     border-radius: 2px;
 }
 
-/* Estados ativos do hamburger */
 .hamburger.active span:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -155,7 +154,7 @@ body {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* ===== HERO SECTION ===== */
+/* HERO SECTION  */
 .hero {
     background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
     color: var(--white);
@@ -210,6 +209,7 @@ body {
 .btn-primary:hover {
     background: var(--dark-purple);
     transform: translateY(-2px);
+    color: white;
     box-shadow: 0 5px 15px rgba(135, 2, 253, 0.3);
 }
 
@@ -252,25 +252,23 @@ body {
     margin: 0 auto;
 }
 
-/* ===== BOTÃO INSTAGRAM ===== */
+
 .btn-instagram {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #E4405F;
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  color: white;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 60px;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .btn-instagram:hover {
-    background: #C13584;
-    transform: translateY(-2px);
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
 /* ===== SECTIONS ===== */
