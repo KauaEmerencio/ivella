@@ -1,4 +1,3 @@
-// Dados dos produtos
 const produtos = [
     {
         id: 1,
@@ -9,7 +8,7 @@ const produtos = [
         cores: ["."],
         descricao: "Conforto, estilo e aquele toque que combina com qualquer ocasião.",
         categoria: "Feminino",
-        imagem: "assets/img3.jpg"
+        imagem: "/assets/img3.jpg"
     },
     {
         id: 2,
@@ -20,7 +19,7 @@ const produtos = [
         cores: ["."],
         descricao: "O equilíbrio perfeito entre conforto e elegância.",
         categoria: "Feminino",
-        imagem: "assets/vestido2.jpeg"
+        imagem: "/assets/vestido2.jpeg"
     },
     {
         id: 3,
@@ -31,7 +30,7 @@ const produtos = [
         cores: ["Azul Royale"],
         descricao: "Leve, charmoso e cheio de confiança do dia a dia ao encontro especial.",
         categoria: "Feminino",
-        imagem: "assets/img2.jpg"
+        imagem: "/assets/img2.jpg"
     },
     {
         id: 4,
@@ -42,7 +41,7 @@ const produtos = [
         cores: ["."],
         descricao: "leve, elegante e com aquele caimento que valoriza sem esforço.",
         categoria: "Feminino",
-        imagem: "assets/img1.jpg"
+        imagem: "/assets/img1.jpg"
     },
 ];
 
@@ -73,14 +72,12 @@ const navMenu = document.querySelector('.nav-menu');
         });
     }
 }
-
 function carregarConteudoPorPagina() {
     const path = window.location.pathname;
-    const page = path.split("/").pop();
-    
-    if (page === 'produtos.html') {
+
+    if (path.includes('/produtos')) {
         carregarTodosProdutos();
-    } else if (page === 'carrinho.html') {
+    } else if (path.includes('/carrinho')) {
         carregarPaginaCarrinho();
     }
 }
@@ -431,6 +428,7 @@ function finalizarPedidoWhatsApp(e) {
         localFinal = `Entrega em - ${endereco}`;
     }
     
+    // Validar cidade personalizada
     if (localSelect === 'Sou de outra cidade') {
         if (!cidadePersonalizada) {
             alert('Por favor, digite o nome da sua cidade!');
@@ -453,6 +451,7 @@ function finalizarPedidoWhatsApp(e) {
     fecharModalWhatsApp();
 }
 
+// Gerar mensagem para WhatsApp
 function gerarMensagemWhatsApp(nome, local, pagamento, valorTroco, observacoes) {
     const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
     const totalProdutos = carrinho.reduce((total, item) => total + (item.preco * item.quantidade), 0);
