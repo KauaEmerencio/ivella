@@ -5,7 +5,7 @@ const produtos = [
         nome: "Conjunto Aurora",
         referencia: "36 a 48",
         material: "",
-        preco: 137.22,
+        preco: 88,
         cores: ["."],
         descricao: "Conforto, estilo e aquele toque que combina com qualquer ocasião.",
         categoria: "Feminino",
@@ -16,7 +16,7 @@ const produtos = [
         nome: "Vestido Luna",
         referencia: "36 a 48",
         material: "",
-        preco: 117.22,
+        preco: 68,
         cores: ["."],
         descricao: "O equilíbrio perfeito entre conforto e elegância.",
         categoria: "Feminino",
@@ -27,7 +27,7 @@ const produtos = [
         nome: "Conjunto Maya",
         referencia: "36 a 48",
         material: "",
-        preco: 117.22,
+        preco: 68,
         cores: ["Azul Royale"],
         descricao: "Leve, charmoso e cheio de confiança do dia a dia ao encontro especial.",
         categoria: "Feminino",
@@ -37,8 +37,8 @@ const produtos = [
         id: 4,
         nome: "Vestido Lara",
         referencia: "342",
-        material: ".",
-        preco: 137.22,
+        material: "",
+        preco: 88,
         cores: ["."],
         descricao: "leve, elegante e com aquele caimento que valoriza sem esforço.",
         categoria: "Feminino",
@@ -431,7 +431,6 @@ function finalizarPedidoWhatsApp(e) {
         localFinal = `Entrega em - ${endereco}`;
     }
     
-    // Validar cidade personalizada
     if (localSelect === 'Sou de outra cidade') {
         if (!cidadePersonalizada) {
             alert('Por favor, digite o nome da sua cidade!');
@@ -454,7 +453,6 @@ function finalizarPedidoWhatsApp(e) {
     fecharModalWhatsApp();
 }
 
-// Gerar mensagem para WhatsApp
 function gerarMensagemWhatsApp(nome, local, pagamento, valorTroco, observacoes) {
     const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
     const totalProdutos = carrinho.reduce((total, item) => total + (item.preco * item.quantidade), 0);
@@ -494,4 +492,3 @@ function gerarMensagemWhatsApp(nome, local, pagamento, valorTroco, observacoes) 
     
     return mensagem;
 }
-
