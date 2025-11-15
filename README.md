@@ -1,2 +1,2 @@
 # ivella
-um site de roupa criado especialmente para atender meus clientes da melhor forma.
+Freelancer criado para uma cliente e sua loja de roupa, Utilizei javascript, css3 e html5 para desenvolver.
